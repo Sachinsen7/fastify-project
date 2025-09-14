@@ -17,6 +17,11 @@ fastify.register(require("@fastify/env"), {
 });
 
 fastify.register(require("./plugins/mongodb"));
+fastify.register(require("./plugins/jwt"));
+
+//register route
+
+fastify.register(require("./routes/auth"), { prefix: "/api/auth" });
 
 fastify.get("/", (request, reply) => {
   reply.send({ hello: "world" });
